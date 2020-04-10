@@ -14,7 +14,7 @@ scores = [0, 0];
 
 roundScore = 0;
 
-activePlayer = 1;
+activePlayer = 0;
 
 
 
@@ -46,6 +46,42 @@ document.querySelector('.btn-roll').addEventListener('click', function () {
     } else {
         //Next player
 
+       nextPlayer();
+
+
+    }
+
+
+});
+
+document.querySelector('.btn-hold').addEventListener('click', function () {
+
+    // add CURRENT score to GLOBAl score
+    scores[activePlayer] += roundScore;
+
+    //update the UI
+
+    document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
+
+    if (scores[activePlayer] >= 20) {
+        document.querySelector('#name-' + activePlayer).textContent = 'Winner!';
+        document.querySelector('.dice').style.display = 'none';
+        document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
+        document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active');
+
+    } else {
+        // next player
+        nextPlayer();
+
+    }
+
+
+    // check if player won the game
+
+});
+
+function nextPlayer() {
+
         activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
         roundScore = 0;
 
@@ -56,15 +92,7 @@ document.querySelector('.btn-roll').addEventListener('click', function () {
         document.querySelector('.player-1-panel').classList.toggle('active');
 
         document.querySelector('dice').style.display = 'none';
-
-
-    }
-
-
-});
-
-
-
+}
 
 //document.querySelector('#current-' + activePlayer).textContent = dice;
 
