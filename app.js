@@ -25,7 +25,7 @@ document.querySelector('.btn-roll').addEventListener('click', function () {
 
     //2 display the result
     var diceDOM = document.querySelector('.dice');
-    diceDOM.style.display='block';
+    diceDOM.style.display = 'block';
     diceDOM.src = 'dice-' + dice + '.png';
 
     //3 update round score only if rolled number was not a 1
@@ -57,7 +57,7 @@ if(gamePlaying){
 
     document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
 
-    if (scores[activePlayer] >= 20) {
+    if (scores[activePlayer] >= 100) {
         document.querySelector('#name-' + activePlayer).textContent = 'Winner!';
         document.querySelector('.dice').style.display = 'none';
         document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
@@ -100,6 +100,8 @@ scores = [0, 0];
 roundScore = 0;
 
 activePlayer = 0;
+
+    gamePlaying = true;
 
 document.querySelector('.dice').style.display = 'none';
 
